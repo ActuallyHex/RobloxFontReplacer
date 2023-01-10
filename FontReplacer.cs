@@ -147,8 +147,12 @@ while (choice != "-1")
         for(int i = 0; i < fontNames.Length; i++)
         {
             string trimmedString = fontNames[i];
-
             trimmedString = trimmedString.Replace(@"C:\Windows\Fonts\", "");
+
+            if (!trimmedString.Contains(".ttf"))
+            {
+                continue;
+            }
 
             Console.WriteLine("System Font : " + trimmedString);
         }
@@ -157,6 +161,13 @@ while (choice != "-1")
         {
             string trimmedString = appdataFontName[i];
             trimmedString = trimmedString.Replace(appDataFontsFolder + @"\", "");
+
+            if(!trimmedString.Contains(".ttf"))
+            {
+                continue;
+            }
+
+            trimmedString = trimmedString.Replace(".ttf", "");
 
             Console.WriteLine("App Data Font: " + trimmedString);
         }
